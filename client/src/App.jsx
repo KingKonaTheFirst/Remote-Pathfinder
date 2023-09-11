@@ -1,7 +1,21 @@
-function App() {
-  const [count, setCount] = useState(0);
+import React from 'react';
+// components
+import Banner from './components/Banner';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Work from './components/Work';
 
-  return <h1>Hey</h1>;
-}
+
+const App = () => {
+  return (
+    <div className='bg-site bg-no-repeat bg-cover overflow-hidden'>
+      <Header />
+      <Banner />
+      <Nav />
+      <Work />
+      <div className='h-[4000px]'></div>
+    </div>
+  );
+};
 
 export default App;
