@@ -1,21 +1,40 @@
-import React from 'react';
-// components
-import Banner from './components/Banner';
-import Header from './components/Header';
+import { Outlet } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
 import Nav from './components/Nav';
-import Work from './components/Work';
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
-const App = () => {
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+function App() {
   return (
-    <div className='bg-site bg-no-repeat bg-cover overflow-hidden'>
-      <Header />
-      <Banner />
-      <Nav />
-      <Work />
-      <div className='h-[4000px]'></div>
+    <ApolloProvider client={client}>
+    <div>
+        <Nav />
+        <Outlet />
     </div>
+  </ApolloProvider>
   );
-};
+}
 
 export default App;
