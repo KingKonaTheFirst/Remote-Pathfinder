@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const Job = require('./jobs');
+const Job = require('./Job');
 
 const userSchema = new Schema({
 
