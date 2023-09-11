@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-// NEED TO IMPORT JOB SCHEMA
+const { Schema, model } = require("mongoose");
+const jobSchema = require("./Job");
 
-const employerSchema = new mongoose.Schema({
+const employerSchema = new Schema({
   employer_name: {
     type: String,
     required: true,
@@ -59,6 +59,6 @@ const employerSchema = new mongoose.Schema({
   jobs: [jobSchema],
 });
 
-const Employer = mongoose.model("Employer", employerSchema);
+const Employer = model("Employer", employerSchema);
 
 module.exports = Employer;
