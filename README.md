@@ -1,4 +1,4 @@
-# Text-Editor-PWA
+# Remote-Pathfinder
   ![Badge for License](https://shields.io/badge/license-MIT-blue.svg)
 
 ## Description
