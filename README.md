@@ -11,7 +11,7 @@
   * [License](#license)
   * [Contributors](#contributors)
   * [Test](#test)
-  * [Questions?](#questions?)
+  * [Questions?](#questions)
 
 ## Installation
   Use the command "npm i" to install neccessary packages to run this application.
@@ -40,6 +40,7 @@
   * Landon Deroin - Kingkonathefirst@gmail.com
   * Travis Rivera - Travis3214@yahoo.com
   * Russell Heady ii - Rdheadyii@gmail.com
+  * Wyatt Bensman - 
 
   ### Repository
   * https://github.com/KingKonaTheFirst/Remote-Pathfinder
