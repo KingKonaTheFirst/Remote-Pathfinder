@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Job = require("../models/jobs");
+const Job = require("../models/Job.js");
 const Employer = require("../models/Employer");
 // query for jobs
 router.get("/api/jobs", async (req, res) => {
