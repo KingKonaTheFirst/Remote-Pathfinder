@@ -1,20 +1,21 @@
 const typeDefs = `
 
-type Address {
-    street: String
-    city: String
-    state: String
-    postalCode: String
-  }
+input AddressInput {
+  street: String
+  city: String
+  state: String
+  postalCode: String
+}
   
   type Employer {
     _id: ID!
     employer_name: String!
     email: String!
     password: String!
-    address: Address
+    address: String
     industry: String!
     size: String!
+    jobs: [Job]
   }
 
   type Job {
@@ -25,9 +26,9 @@ type Address {
     description: String!
     location: String!
     benefits: String!
+    employerId: ID!
   }
 
-  // NEED TO ADD PASSWORD
   type User {
     _id: ID!
     first: String!
@@ -35,6 +36,7 @@ type Address {
     email: String!
     phone: String,
     skills: [String]
+    savedjobs: [Job]
   }
 
   type Auth {
@@ -44,20 +46,20 @@ type Address {
   }
 
   type Query {
-    user(userId: ID!): User
-    employer(employerId: ID!): Employer
+    employers: [Employer]
     jobs: [Job]
+    user(userId: ID!): User
   }
 
-  type mutation {
+  type Mutation {
     createUser(first: String!, last: String!, email: String!, password: String!, phone: String, skills: [String]): Auth
-    createEmployer(employer_name: String!, address: AddressInput!, industry: String!, size: String!): Employer
+    createEmployer(employer_name: String!, email: String!, password: String!, address: AddressInput, industry: String!, size: String!): Auth
     userLogin(email: String!, password: String!): Auth
     employerLogin(email: String!, password: String!): Auth
-    updateUser(first: String, last: String, email: String, password: String, phone: String, skills: [String]): User
+    updateUser(userId: ID!, first: String, last: String, email: String, password: String, phone: String, skills: [String]): User
     saveJob(userId: ID!, jobId: ID!): User
     unsaveJob(userId: ID!, jobId: ID!): User
-    createJob(title: String!, pay: Number!, employment_type: String!, description: String!, location: String!, benefits: String!): Job
+    createJob(title: String!, pay: Float!, employment_type: String!, description: String!, location: String!, benefits: String!, employerId: ID!): Job
     updateJob(jobId: ID!, title: String, pay: Float, employment_type: String, description: String, location: String, benefits: String
       ): Job
     archiveJob(jobId: ID!): Job

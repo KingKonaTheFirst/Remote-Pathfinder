@@ -31,6 +31,10 @@ const jobSchema = new Schema({
     required: true,
     trim: true,
   },
+  employerId: {
+    type: Schema.Types.ObjectId,
+    ref: "Employer",
+  },
   applicants: [
     {
       type: Schema.Types.ObjectId,
