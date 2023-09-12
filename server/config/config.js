@@ -1,6 +1,6 @@
 const { connect, connection } = require("mongoose");
 
 // DB Name goes at the end ------->
-connect("mongodb://127.0.0.1:27017/databaseName");
+connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/remotepfDB");
 
 module.exports = connection;
