@@ -41,8 +41,8 @@ function App() {
         <Header />
         <Outlet />
         <Nav />
+        <Footer />
       </div>
-      <Footer />
     </ApolloProvider>
   );
 }

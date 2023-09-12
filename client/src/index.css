@@ -69,3 +69,24 @@
     @apply py-8 lg:py-24 lg:h-screen flex items-center;
   }
 }
+
+.footer1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(38, 38, 38);
+  color: white;
+}
+
+.footer2 {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.link {
+  color: white;
+}
