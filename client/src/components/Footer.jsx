@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '/index.css'
 import {FaGithub} from "react-icons/fa"
 
@@ -10,10 +11,10 @@ const Footer = () => {
       </h3>
       <div className="footer2">
         <div>
-          <a className="link" href="#">About</a>
+          <Link className="link" to='/About'>About</Link>
         </div>
         <div>
-        <a className="link" href="#">Help</a>
+        <Link className="link" to='/Contact'>Contact</Link>
         </div>
       </div>
       <div className="footer2">
