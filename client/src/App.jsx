@@ -37,12 +37,13 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div>
+      <div className='bg-site bg-no-repeat bg-cover overflow-hidden'>
         <Header />
         <Outlet />
         <Nav />
-      </div>
       <Footer />
+      <div className='h-[4000px]'></div>
+      </div>
     </ApolloProvider>
   );
 }
