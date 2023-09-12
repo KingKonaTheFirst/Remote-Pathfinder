@@ -18,6 +18,5 @@
     "concurrently": "^5.1.0",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3"
-    "concurrently": "^5.1.0"
   }
 }
