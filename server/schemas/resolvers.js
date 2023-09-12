@@ -1,9 +1,11 @@
 const Job = require("../models/Job.js");
 const Employer = require("../models/Employer");
 const User = require("../models/User.js");
+const { signToken, AuthenticationError } = require("../utils/auth.js");
 
 const resolvers = {
   Query: {
+    // Brings back array of Jobs
     jobs: async () => {
       try {
         return await Job.find({});
@@ -11,6 +13,7 @@ const resolvers = {
         throw new Error(err);
       }
     },
+    // Brings back array of Employers
     employers: async () => {
       try {
         return await Employer.find({}).populate("jobs");
@@ -22,6 +25,7 @@ const resolvers = {
 
   Mutation: {
     // Create User
+    // This works!
     createUser: async (_, { first, last, email, password, phone, skills }) => {
       try {
         const user = await User.create({
@@ -39,13 +43,20 @@ const resolvers = {
       }
     },
     // Create Employer
-    createEmployer: async (_, { employer_name, address, industry, size }) => {
+    // This works!
+    createEmployer: async (
+      _,
+      { employer_name, email, password, address, industry, size, jobs }
+    ) => {
       try {
         const employer = await Employer.create({
           employer_name,
+          email,
+          password,
           address,
           industry,
           size,
+          jobs,
         });
         const token = signToken(employer);
         return { token, employer };
@@ -54,15 +65,20 @@ const resolvers = {
       }
     },
     // User Login
+    // Need to Fix Authentication
+    // It's giving me false for correctPw, even when it's correct
     userLogin: async (_, { email, password }) => {
       try {
         const user = await User.findOne({ email });
+        console.log(user);
 
         if (!user) {
           throw AuthenticationError;
         }
 
-        const correctPw = await user.isCorrectPassword(password);
+        console.log(user.password);
+        const correctPw = await user.checkPassword(password);
+        console.log(correctPw);
 
         if (!correctPw) {
           throw AuthenticationError;
@@ -98,6 +114,7 @@ const resolvers = {
       }
     },
     // Update User
+    // This works!
     updateUser: async (
       _,
       { userId, first, last, email, password, phone, skills }
@@ -114,12 +131,14 @@ const resolvers = {
     },
     // Update Employer
     // Save Job
+    // This kind of works! I get an error on GraphQL, but it adds to the array on Compass
+    // Saying it Cannot return null for non-nullable field Job.title
     saveJob: async (_, { userId, jobId }) => {
       try {
         return User.findOneAndUpdate(
           { _id: userId },
           {
-            $addToSet: { savedjobs: { jobId } },
+            $addToSet: { savedjobs: jobId },
           },
           {
             new: true,
@@ -131,12 +150,13 @@ const resolvers = {
       }
     },
     // Unsave Job
+    // This works!
     unsaveJob: async (_, { userId, jobId }) => {
       try {
         return User.findOneAndUpdate(
           { _id: userId },
           {
-            $pull: { savedjobs: { jobId } },
+            $pull: { savedjobs: jobId },
           },
           {
             new: true,
@@ -148,16 +168,20 @@ const resolvers = {
       }
     },
     // Create Job
+    // This works!
     createJob: async (
       _,
-      { title, pay, employment_type, description, location, benefits }
+      {
+        title,
+        pay,
+        employment_type,
+        description,
+        location,
+        benefits,
+        employerId,
+      }
     ) => {
       try {
-        await Employer.findOneAndUpdate(
-          { _id: employerId },
-          { $addToSet: { jobs: jobId } }
-        );
-
         const newJob = await Job.create({
           title,
           pay,
@@ -165,13 +189,38 @@ const resolvers = {
           description,
           location,
           benefits,
+          employerId,
         });
+
+        const employerData = await Employer.findOneAndUpdate(
+          { _id: employerId },
+          { $addToSet: { jobs: newJob._id } },
+          { new: true }
+        );
+
+        return newJob;
       } catch (err) {
         throw new Error(err);
       }
     },
     // Update Job
+    // This works!
+    updateJob: async (
+      _,
+      { jobId, title, pay, employment_type, description, location, benefits }
+    ) => {
+      try {
+        return Job.findByIdAndUpdate(
+          { _id: jobId },
+          { title, pay, employment_type, description, location, benefits },
+          { new: true }
+        );
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
     // Archive Job
+    // Should I make another array for the Employer, one for an Archived Jobs?
   },
 };
 
