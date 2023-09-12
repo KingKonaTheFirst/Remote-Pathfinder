@@ -10,6 +10,8 @@ type Address {
   type Employer {
     _id: ID!
     employer_name: String!
+    email: String!
+    password: String!
     address: Address
     industry: String!
     size: String!
@@ -25,6 +27,7 @@ type Address {
     benefits: String!
   }
 
+  // NEED TO ADD PASSWORD
   type User {
     _id: ID!
     first: String!
@@ -37,6 +40,7 @@ type Address {
   type Auth {
     token: ID!
     user: User
+    employer: Employer
   }
 
   type Query {
@@ -48,7 +52,8 @@ type Address {
   type mutation {
     createUser(first: String!, last: String!, email: String!, password: String!, phone: String, skills: [String]): Auth
     createEmployer(employer_name: String!, address: AddressInput!, industry: String!, size: String!): Employer
-    login(email: String!, password: String!): Auth
+    userLogin(email: String!, password: String!): Auth
+    employerLogin(email: String!, password: String!): Auth
     updateUser(first: String, last: String, email: String, password: String, phone: String, skills: [String]): User
     saveJob(userId: ID!, jobId: ID!): User
     unsaveJob(userId: ID!, jobId: ID!): User

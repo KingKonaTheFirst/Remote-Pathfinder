@@ -1,8 +1,17 @@
 const { Schema, model } = require("mongoose");
-const jobSchema = require("./Job");
+const Job = require("./Job");
 
 const employerSchema = new Schema({
   employer_name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    require: true,
+    unique: true,
+  },
+  password: {
     type: String,
     required: true,
   },
@@ -55,8 +64,12 @@ const employerSchema = new Schema({
       "Mid-Sized (11-100)",
     ],
   },
-  // NEED TO IMPORT & USE Job Schema
-  jobs: [jobSchema],
+  jobs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Job",
+    },
+  ],
 });
 
 const Employer = model("Employer", employerSchema);
