@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Input from "../components/Input";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
 
@@ -10,47 +11,49 @@ const Contact = () => {
         message: '',
     });
 
+    const form = useRef();
+
     const handleChange = (e) => {
         setInput({
             ...input,
             [e.target.name]: e.target.value,
         });
-        console.log("tracking");
     };
 
-    const handleSubmit = (e) => {
+    const sendEmail = (e) => {
         e.preventDefault();
-        console.log(input);
-        setInput({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
+
+        emailjs.sendForm('service_uds51km', 'template_36d3iy2', form.current, 'RG00fl_M1OlduzjPs')
+        .then((result) => {
+            console.log(result.text);
+            form.current.reset();
+        }, (error) => {
+            console.log(error.text);
         });
     };
 
     return (
         <div className='container'>
             <h1>Contact</h1>
-            <form className="text-white py-20 w-[95%] md:w-[70%] lg:w-[60%] m-auto" onSubmit={handleSubmit}>
+            <form ref={form} className="text-white py-20 w-[95%] md:w-[70%] lg:w-[60%] m-auto" onSubmit={sendEmail}>
 
                 <Input
-                name={'name'}
-                type={'text'}
+                name='name'
+                type='text'
                 placeholder='Your Name'
                 event={handleChange}
                 />
 
                 <Input 
-                name={'email'}
-                type={'email'}
+                name='email'
+                type='email'
                 placeholder='example@testmail.com'
                 event={handleChange}
                 />
 
                 <Input 
-                name={'subject'}
-                type={'text'}
+                name='subject'
+                type='text'
                 placeholder='Subject'
                 event={handleChange}
                 />
@@ -65,9 +68,10 @@ const Contact = () => {
 
                 <button
                     type='submit'
+                    value='Send'
                     className='py-2 px-8 border border-secondary rounded-3xl bg-secondary text-white font-bold hover:text-secondary hover:bg-transparent transform hover:scale-110 duration-500'
                 >
-                    Submit
+                    Send
                 </button>
             </form>
         </div>
