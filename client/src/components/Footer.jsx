@@ -6,7 +6,7 @@ import "../index.css"
 const Footer = () => {
   return (
     
-    <div className="footer1">
+    <div className="footer1 m-h-screen ">
       <div className="footer2">
         <div>
           <Link className="link" to='/About'>About</Link>
