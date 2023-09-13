@@ -182,6 +182,10 @@ button:focus-visible {
   text-align: center;
   margin-left: 50px;
   margin-right: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Media query for medium-sized screens and above */

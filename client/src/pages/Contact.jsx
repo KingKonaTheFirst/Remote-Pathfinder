@@ -40,7 +40,7 @@ const Contact = () => {
                 <Input
                 name='name'
                 type='text'
-                placeholder='Your Name'
+                placeholder='Your name'
                 event={handleChange}
                 />
 
