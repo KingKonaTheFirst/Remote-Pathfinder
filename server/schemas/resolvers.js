@@ -50,10 +50,8 @@ const resolvers = {
     },
   },
 
-  // Need Mutation for User's to Apply
   Mutation: {
     // Create User
-    // This works!
     createUser: async (_, { first, last, email, password, phone, skills }) => {
       try {
         const user = await User.create({
@@ -71,7 +69,6 @@ const resolvers = {
       }
     },
     // Create Employer
-    // This works!
     createEmployer: async (
       _,
       { employer_name, email, password, address, industry, size, jobs }
@@ -93,8 +90,6 @@ const resolvers = {
       }
     },
     // User Login
-    // Need to Fix Authentication
-    // It's giving me false for correctPw, even when it's correct
     userLogin: async (_, { email, password }) => {
       try {
         const user = await User.findOne({ email });
@@ -104,9 +99,7 @@ const resolvers = {
           throw AuthenticationError;
         }
 
-        console.log(user.password);
         const correctPw = await user.checkPassword(password);
-        console.log(correctPw);
 
         if (!correctPw) {
           throw AuthenticationError;
@@ -142,7 +135,6 @@ const resolvers = {
       }
     },
     // Update User
-    // This works!
     updateUser: async (
       _,
       { userId, first, last, email, password, phone, skills }
@@ -158,12 +150,24 @@ const resolvers = {
       }
     },
     // Update Employer
+    updateEmployer: async (
+      _,
+      { employerId, employer_name, email, password, address, industry, size }
+    ) => {
+      try {
+        return Employer.findByIdAndUpdate(
+          { _id: employerId },
+          { employer_name, email, password, address, industry, size },
+          { new: true }
+        );
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
     // Save Job
-    // This kind of works! I get an error on GraphQL, but it adds to the array on Compass
-    // Saying it Cannot return null for non-nullable field Job.title
     saveJob: async (_, { userId, jobId }) => {
       try {
-        return User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: userId },
           {
             $addToSet: { savedjobs: jobId },
@@ -173,12 +177,12 @@ const resolvers = {
             runValidators: true,
           }
         );
+        return updatedUser;
       } catch (err) {
         throw new Error(err);
       }
     },
     // Unsave Job
-    // This works!
     unsaveJob: async (_, { userId, jobId }) => {
       try {
         return User.findOneAndUpdate(
@@ -196,7 +200,6 @@ const resolvers = {
       }
     },
     // Create Job
-    // This works!
     createJob: async (
       _,
       {
@@ -232,7 +235,6 @@ const resolvers = {
       }
     },
     // Update Job
-    // This works!
     updateJob: async (
       _,
       { jobId, title, pay, employment_type, description, location, benefits }
@@ -247,8 +249,6 @@ const resolvers = {
         throw new Error(err);
       }
     },
-    // Archive Job
-    // Should I make another array for the Employer, one for an Archived Jobs?
   },
 };
 

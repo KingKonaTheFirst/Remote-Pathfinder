@@ -41,6 +41,7 @@ const jobSchema = new Schema({
       ref: "User",
     },
   ],
+  archived: { type: Boolean, default: false },
 });
 
 const Job = mongoose.model("Job", jobSchema);
