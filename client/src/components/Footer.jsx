@@ -10,14 +10,17 @@ const Footer = () => {
         <div>
           <Link className="link" to='/About'>About</Link>
         </div>
-        <div className="footer2">
-        <a className="link" href="https://github.com/KingKonaTheFirst/Remote-Pathfinder" target="_blank"><FaGithub /></a>
-        </div>
         <div>
         <Link className="link" to='/Contact'>Contact</Link>
         </div>
+        <div>
+        <Link className="link" to='/Plans'>Future Plans</Link>
+        </div>
       </div>
-      
+      <div className="logo">
+        <a className="link" href="https://github.com/KingKonaTheFirst/Remote-Pathfinder" target="_blank"><FaGithub /></a>
+        </div>
+
       <h3 className="footer1">
         Remote Pathfinder &copy; 2023
       </h3>
