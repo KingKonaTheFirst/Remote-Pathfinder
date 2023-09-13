@@ -1,20 +1,16 @@
-const Input = ({name, type, label, placeholder, event}) => {
+const Input = ({name, type, placeholder, event}) => {
     return (
         <>
-            <div>
-                <label htmlFor="name">
-                    {label}
-                </label>
-                <div>
-                    <input 
-                        name={name}
-                        type={type}
-                        id={name}
-                        placeholder={placeholder}
-                        onChange={event}
-                        required
-                    />
-                </div>
+            <div className="mt-1">
+                <input 
+                    className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md "
+                    name={name}
+                    type={type}
+                    id={name}
+                    placeholder={placeholder}
+                    onChange={event}
+                    required
+                />
             </div>
         </>
     );
