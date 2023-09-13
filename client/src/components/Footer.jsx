@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import '/index.css'
 import {FaGithub} from "react-icons/fa"
+import "../index.css"
 
 const Footer = () => {
   return (
