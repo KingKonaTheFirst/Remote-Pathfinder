@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { CREATE_USER } from "../utils/mutations";
 
-export default function UserSignUp() {
+export default function SignUp() {
   // State to Hold Form Data
   const [signUpData, setSignUpData] = useState({
     first: "",
@@ -11,7 +13,7 @@ export default function UserSignUp() {
   });
 
   // Mutation Hook
-  const [createUser] = useMutation(CREATE_USER);
+  const [createUser, { error, data }] = useMutation(CREATE_USER);
 
   // Handle input changes and update form data
   const handleInputChange = (e) => {
@@ -23,9 +25,11 @@ export default function UserSignUp() {
     e.preventDefault();
 
     try {
-      const { data } = await createUser({
-        variables: { ...signUpData },
+      const data = await createUser({
+        variables: signUpData,
       });
+
+      Auth.login(data.createUser.token);
     } catch (error) {
       console.error(error);
     }
