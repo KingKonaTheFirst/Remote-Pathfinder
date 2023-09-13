@@ -161,3 +161,11 @@ button:focus-visible {
 .link {
   color: white;
 }
+
+.about {
+  margin: 40px;
+}
+
+.heading {
+  font-size: 40px;
+}
