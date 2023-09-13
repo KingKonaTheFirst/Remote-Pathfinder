@@ -25,11 +25,6 @@ const userSchema = new Schema({
   phone: {
     type: String,
   },
-  skills: {
-    type: [String],
-    required: true,
-    max_length: 500,
-  },
   savedjobs: [{ type: Schema.Types.ObjectId, ref: "Job" }],
 });
 

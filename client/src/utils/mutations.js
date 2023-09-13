@@ -6,35 +6,26 @@ export const CREATE_USER = gql`
     $last: String!
     $email: String!
     $password: String!
-    $phone: String
-    $skills: [String]
   ) {
-    createUser(
-      first: $first
-      last: $last
-      email: $email
-      password: $password
-      phone: $phone
-      skills: $skills
-    ) {
+    createUser(first: $first, last: $last, email: $email, password: $password) {
       token
       user {
-        _id
+        email
         first
         last
-        email
+        password
         phone
-        skills
         savedjobs {
-          _id
-          title
-          pay
-          employment_type
-          description
-          location
           benefits
+          description
           employerId
+          employment_type
+          location
+          pay
+          title
+          _id
         }
+        _id
       }
     }
   }
