@@ -180,10 +180,19 @@ button:focus-visible {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+/* Media query for medium-sized screens and above */
+@media (min-width: 768px) {
+  .contactForm {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
 }
 
 .formSpacing {
+  margin-top: 20px;
   margin-bottom: 20px;
 }

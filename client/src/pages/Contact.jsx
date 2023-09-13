@@ -35,7 +35,7 @@ const Contact = () => {
     return (
         <div className='flex overflow-hidden contactForm'>
             <h1 className="heading">Contact</h1>
-            <form ref={form} className="text-white formSpacing" onSubmit={sendEmail}>
+            <form ref={form} className="text-white" onSubmit={sendEmail}>
 
                 <Input
                 name='name'
@@ -69,7 +69,7 @@ const Contact = () => {
                 <button
                     type='submit'
                     value='Send'
-                    className='py-2 px-8 border border-secondary rounded-3xl bg-secondary text-white font-bold hover:text-secondary hover:bg-transparent transform hover:scale-110 duration-500'
+                    className='formSpacing py-2 px-8 border border-secondary rounded-3xl bg-secondary text-white font-bold hover:text-secondary hover:bg-transparent transform hover:scale-110 duration-500'
                 >
                     Send
                 </button>

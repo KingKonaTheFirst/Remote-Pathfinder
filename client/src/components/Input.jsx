@@ -1,7 +1,7 @@
 const Input = ({name, type, placeholder, event}) => {
     return (
         <>
-            <div className="mt-1">
+            <div className="mt-1 formSpacing">
                 <input 
                     className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md "
                     name={name}
