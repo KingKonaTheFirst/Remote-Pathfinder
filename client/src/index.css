@@ -49,6 +49,9 @@ button {
 button:hover {
   border-color: #646cff;
 }
+#submit:hover {
+  color: #646cff;
+}
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -140,7 +143,8 @@ button:focus-visible {
 }
 
 .footer1 {
-  display: flex;
+  /* display: flex; */
+  
   flex-direction: column;
   justify-content: center;
   text-align: center;
@@ -148,13 +152,14 @@ button:focus-visible {
   color: white;
   padding-top: 15px;
   padding-bottom: 10px;
-}
+  /* position: absolute; */
+  }
 
 .footer2 {
   display: flex;
   justify-content: space-evenly;
   padding-left: 52px;
-  
+ 
 }
 
 .link {
@@ -199,4 +204,11 @@ button:focus-visible {
 .formSpacing {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.bg-site {
+  display: flex;
+  flex-direction: column;
+}
+.outlet-content {
+  flex: 1;
 }
