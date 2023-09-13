@@ -46,9 +46,11 @@ input AddressInput {
   }
 
   type Query {
+    user(userId: ID!): User
+    job(jobId: ID!): Job
+    employer(employerId: ID!): Employer
     employers: [Employer]
     jobs: [Job]
-    user(userId: ID!): User
   }
 
   type Mutation {
