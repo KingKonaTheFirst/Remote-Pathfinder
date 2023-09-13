@@ -4,8 +4,34 @@ const User = require("../models/User.js");
 const { signToken, AuthenticationError } = require("../utils/auth.js");
 
 const resolvers = {
+  // Need Query to Get All User's that Apply
   Query: {
-    // Brings back array of Jobs
+    // Single User
+    user: async (_, { userId }) => {
+      try {
+        return User.findOne({ _id: userId });
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+    // Single Job
+    job: async (_, { jobId }) => {
+      try {
+        return Job.findOne({ _id: jobId });
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+    // Single Employer
+    employer: async (_, { employerId }) => {
+      try {
+        return Employer.findOne({ _id: employerId });
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+
+    // All Jobs
     jobs: async () => {
       try {
         return await Job.find({});
@@ -13,7 +39,8 @@ const resolvers = {
         throw new Error(err);
       }
     },
-    // Brings back array of Employers
+
+    // All Employers
     employers: async () => {
       try {
         return await Employer.find({}).populate("jobs");
@@ -23,6 +50,7 @@ const resolvers = {
     },
   },
 
+  // Need Mutation for User's to Apply
   Mutation: {
     // Create User
     // This works!
