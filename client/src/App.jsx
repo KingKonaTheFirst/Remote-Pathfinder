@@ -10,7 +10,6 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context"
 import './index.css';
-import Nav from "./components/Nav"
 
 
 // import Nav from './components/Nav';

@@ -14,7 +14,11 @@ import MenuList from '@mui/material/MenuList';
 const Header = () => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleLogin = () => {
+    // If you have a login mechanism, you might want to set isLoggedIn after a successful login
+    setOpen(false);
+  };
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
@@ -89,7 +93,7 @@ const Header = () => {
                           placement === 'bottom-start' ? 'left top' : 'left bottom',
                       }}
                     >
-                      <Paper>
+                     <Paper>
                         <ClickAwayListener onClickAway={handleClose}>
                           <MenuList
                             autoFocusItem={open}
@@ -103,9 +107,15 @@ const Header = () => {
                             <MenuItem onClick={handleClose}>
                               <Link to="/account">My account</Link>
                             </MenuItem>
-                            <MenuItem onClick={handleClose}>
-                              Logout
-                            </MenuItem>
+                            {isLoggedIn ? (
+                              <MenuItem onClick={handleLogout}>
+                                Logout
+                              </MenuItem>
+                            ) : (
+                              <MenuItem onClick={handleLogin}>
+                                <Link to="/signup">Login</Link>
+                              </MenuItem>
+                            )}
                           </MenuList>
                         </ClickAwayListener>
                       </Paper>
