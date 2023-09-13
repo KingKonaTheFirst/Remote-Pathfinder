@@ -34,6 +34,7 @@ input AddressInput {
     first: String!
     last: String!
     email: String!
+    password: String!
     phone: String,
     skills: [String]
     savedjobs: [Job]

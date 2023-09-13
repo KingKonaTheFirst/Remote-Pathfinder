@@ -10,6 +10,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context"
 import './index.css';
+import Nav from "./components/Nav"
 
 
 // import Nav from './components/Nav';
@@ -36,11 +37,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div>
+      <div className='bg-site bg-no-repeat bg-cover overflow-hidden'>
         <Header />
         <Outlet />
+        <Footer />
+      <div className='h-[4000px]'></div>
       </div>
-      <Footer />
     </ApolloProvider>
   );
 }

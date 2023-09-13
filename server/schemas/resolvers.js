@@ -50,10 +50,8 @@ const resolvers = {
     },
   },
 
-  // Need Mutation for User's to Apply
   Mutation: {
     // Create User
-    // This works!
     createUser: async (_, { first, last, email, password, phone, skills }) => {
       try {
         const user = await User.create({
@@ -71,7 +69,6 @@ const resolvers = {
       }
     },
     // Create Employer
-    // This works!
     createEmployer: async (
       _,
       { employer_name, email, password, address, industry, size, jobs }
@@ -93,8 +90,6 @@ const resolvers = {
       }
     },
     // User Login
-    // Need to Fix Authentication
-    // It's giving me false for correctPw, even when it's correct
     userLogin: async (_, { email, password }) => {
       try {
         const user = await User.findOne({ email });
@@ -104,9 +99,7 @@ const resolvers = {
           throw AuthenticationError;
         }
 
-        console.log(user.password);
         const correctPw = await user.checkPassword(password);
-        console.log(correctPw);
 
         if (!correctPw) {
           throw AuthenticationError;
@@ -142,7 +135,6 @@ const resolvers = {
       }
     },
     // Update User
-    // This works!
     updateUser: async (
       _,
       { userId, first, last, email, password, phone, skills }
