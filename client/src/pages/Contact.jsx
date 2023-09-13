@@ -30,17 +30,45 @@ const Contact = () => {
     };
 
     return (
-        <div>
+        <div className='container'>
             <h1>Contact</h1>
-            <form action="" onSubmit={handleSubmit}>
+            <form className="text-white py-20 w-[95%] md:w-[70%] lg:w-[60%] m-auto" onSubmit={handleSubmit}>
 
-                <Input event={handleChange}/>
+                <Input
+                name={'name'}
+                type={'text'}
+                placeholder='Your Name'
+                event={handleChange}
+                />
 
-                <Input event={handleChange}/>
+                <Input 
+                name={'email'}
+                type={'email'}
+                placeholder='example@testmail.com'
+                event={handleChange}
+                />
 
-                <Input event={handleChange}/>
+                <Input 
+                name={'subject'}
+                type={'text'}
+                placeholder='Subject'
+                event={handleChange}
+                />
 
-                <textarea name="" id="" cols="30" rows="10" onChange={handleChange}></textarea>
+                <textarea 
+                name='message'
+                type='text'
+                placeholder='Message Here'
+                id='message'
+                className='py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md h-[10rem]' 
+                onChange={handleChange} />
+
+                <button
+                    type='submit'
+                    className='py-2 px-8 border border-secondary rounded-3xl bg-secondary text-white font-bold hover:text-secondary hover:bg-transparent transform hover:scale-110 duration-500'
+                >
+                    Submit
+                </button>
             </form>
         </div>
     );
