@@ -174,3 +174,16 @@ button:focus-visible {
   justify-content: center;
   margin-top: 20px;
 }
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.formSpacing {
+  margin-bottom: 20px;
+}

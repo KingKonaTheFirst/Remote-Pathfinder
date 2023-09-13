@@ -30,9 +30,9 @@ const Contact = () => {
     };
 
     return (
-        <div className='container'>
-            <h1>Contact</h1>
-            <form className="text-white py-20 w-[95%] md:w-[70%] lg:w-[60%] m-auto" onSubmit={handleSubmit}>
+        <div className='flex overflow-hidden contactForm'>
+            <h1 className="heading">Contact</h1>
+            <form className="text-white formSpacing" onSubmit={handleSubmit}>
 
                 <Input
                 name={'name'}
