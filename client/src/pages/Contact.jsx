@@ -33,9 +33,9 @@ const Contact = () => {
     };
 
     return (
-        <div className='container'>
-            <h1>Contact</h1>
-            <form ref={form} className="text-white py-20 w-[95%] md:w-[70%] lg:w-[60%] m-auto" onSubmit={sendEmail}>
+        <div className='flex overflow-hidden contactForm'>
+            <h1 className="heading">Contact</h1>
+            <form ref={form} className="text-white formSpacing" onSubmit={sendEmail}>
 
                 <Input
                 name='name'
