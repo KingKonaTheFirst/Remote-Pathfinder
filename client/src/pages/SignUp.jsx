@@ -76,11 +76,10 @@ export default function UserSignUp() {
           </div>
         </div>
 
-        <button 
-          type="submit"
-          className="block w-full mt-8 px-4 py-2 font-medium text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-700 transition-color">
-          Submit
-        </button>
+        <div 
+  className="w-full mt-8 px-4 py-2 font-medium text-white overflow-hidden rounded cursor-pointer hover:teal-800 focus:outline-none focus:bg-teal-900 transition-color">
+  Submit
+</div>
       </form>
     </div>
   );
