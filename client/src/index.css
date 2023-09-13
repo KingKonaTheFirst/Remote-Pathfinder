@@ -147,14 +147,15 @@ button:focus-visible {
   text-align: center;
   background-color: rgb(38, 38, 38);
   color: white;
+  padding-bottom: 5px;
 }
 
 .footer2 {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding-top: 12px;
+  padding-bottom: 10px;
 }
 
 .link {
