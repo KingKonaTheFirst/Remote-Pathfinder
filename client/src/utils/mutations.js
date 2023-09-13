@@ -80,7 +80,58 @@ export const CREATE_EMPLOYER = gql`
   }
 `;
 
-// NEED TO ADD USER & EMPLOYER LOGIN ONCE CORRECTED
+export const USER_LOGIN = gql`
+  mutation UserLogin($email: String!, $password: String!) {
+    userLogin(email: $email, password: $password) {
+      token
+      user {
+        _id
+        first
+        last
+        email
+        phone
+        skills
+        savedjobs {
+          _id
+          title
+          pay
+          employment_type
+          description
+          location
+          benefits
+          employerId
+        }
+      }
+    }
+  }
+`;
+
+export const EMPLOYER_LOGIN = gql`
+  mutation EmployerLogin($email: String!, $password: String!) {
+    employerLogin(email: $email, password: $password) {
+      token
+      employer {
+        _id
+        employer_name
+        email
+        address
+        industry
+        size
+        jobs {
+          _id
+          title
+          pay
+          employment_type
+          description
+          location
+          benefits
+          employerId
+        }
+      }
+    }
+  }
+`;
+
 export const UPDATE_USER = gql`
   mutation UpdateUser(
     $userId: ID!
@@ -107,6 +158,46 @@ export const UPDATE_USER = gql`
       phone
       skills
       savedjobs {
+        _id
+        title
+        pay
+        employment_type
+        description
+        location
+        benefits
+        employerId
+      }
+    }
+  }
+`;
+
+export const UPDATE_EMPLOYER = gql`
+  mutation UpdateEmployer(
+    $employerId: ID!
+    $employer_name: String
+    $email: String
+    $password: String
+    $address: AddressInput
+    $industry: String
+    $size: String
+  ) {
+    updateEmployer(
+      employerId: $employerId
+      employer_name: $employer_name
+      email: $email
+      password: $password
+      address: $address
+      industry: $industry
+      size: $size
+    ) {
+      _id
+      employer_name
+      email
+      password
+      address
+      industry
+      size
+      jobs {
         _id
         title
         pay
@@ -227,5 +318,3 @@ export const UPDATE_JOB = gql`
     }
   }
 `;
-
-// NEED TO ADD ARCHIVE JOB

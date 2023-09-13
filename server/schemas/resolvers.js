@@ -158,8 +158,21 @@ const resolvers = {
       }
     },
     // Update Employer
+    updateEmployer: async (
+      _,
+      { employerId, employer_name, email, password, address, industry, size }
+    ) => {
+      try {
+        return Employer.findByIdAndUpdate(
+          { _id: employerId },
+          { employer_name, email, password, address, industry, size },
+          { new: true }
+        );
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
     // Save Job
-    // This works!
     saveJob: async (_, { userId, jobId }) => {
       try {
         const updatedUser = await User.findOneAndUpdate(
@@ -178,7 +191,6 @@ const resolvers = {
       }
     },
     // Unsave Job
-    // This works!
     unsaveJob: async (_, { userId, jobId }) => {
       try {
         return User.findOneAndUpdate(
@@ -196,7 +208,6 @@ const resolvers = {
       }
     },
     // Create Job
-    // This works!
     createJob: async (
       _,
       {
@@ -232,7 +243,6 @@ const resolvers = {
       }
     },
     // Update Job
-    // This works!
     updateJob: async (
       _,
       { jobId, title, pay, employment_type, description, location, benefits }
@@ -247,8 +257,6 @@ const resolvers = {
         throw new Error(err);
       }
     },
-    // Archive Job
-    // Should I make another array for the Employer, one for an Archived Jobs?
   },
 };
 
