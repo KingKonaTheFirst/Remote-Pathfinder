@@ -8,8 +8,8 @@ export default function UserSignUp() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className="p-5 flex justify-center items-center">
-      <form className="w-full max-w-lg bg-gray-800 p-8 rounded-lg">
+    <div className="p-10 flex justify-center items-center">
+      <form className="w-full max-w-lg footer1 p-8 rounded-lg">
         <h1 className="mb-6 text-3xl font-medium text-white text-center">Sign Up</h1>
         
         <div className="flex gap-4">
@@ -21,7 +21,7 @@ export default function UserSignUp() {
               onChange={(e) => setFirst(e.target.value)}
               type="text"
               placeholder="Enter your first name"
-              className="mt-2 w-full px-3 py-2 text-gray-900 bg-white rounded shadow focus:outline-none focus:border-blue-500"
+              className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md"
             />
           </div>
 
@@ -33,7 +33,7 @@ export default function UserSignUp() {
               onChange={(e) => setLast(e.target.value)}
               type="text"
               placeholder="Enter your last name"
-              className="mt-2 w-full px-3 py-2 text-gray-900 bg-white rounded shadow focus:outline-none focus:border-blue-500"
+              className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md"
             />
           </div>
         </div>
@@ -46,7 +46,7 @@ export default function UserSignUp() {
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="example@gmail.com"
-            className="mt-2 w-full px-3 py-2 text-gray-900 bg-white rounded shadow focus:outline-none focus:border-blue-500"
+            className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md"
           />
         </div>
 
@@ -59,7 +59,7 @@ export default function UserSignUp() {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="Enter your password"
-              className="mt-2 w-full px-3 py-2 text-gray-900 bg-white rounded shadow focus:outline-none focus:border-blue-500"
+              className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md"
             />
           </div>
 
@@ -71,14 +71,16 @@ export default function UserSignUp() {
               onChange={(e) => setPhone(e.target.value)}
               type="text"
               placeholder="Enter your phone number"
-              className="mt-2 w-full px-3 py-2 text-gray-900 bg-white rounded shadow focus:outline-none focus:border-blue-500"
+              className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md"
             />
           </div>
         </div>
 
-        <div 
-  className="w-full mt-8 px-4 py-2 font-medium text-white overflow-hidden rounded cursor-pointer hover:teal-800 focus:outline-none focus:bg-teal-900 transition-color">
-  Submit
+        <div className="flex justify-center mt-8">
+  <div id="submit"
+    className="px-4 py-2 font-medium text-white overflow-hidden cursor-pointer focus:outline-none focus:bg-teal-900 transition-color">
+    Submit
+  </div>
 </div>
       </form>
     </div>
