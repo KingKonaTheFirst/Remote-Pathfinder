@@ -159,11 +159,10 @@ const resolvers = {
     },
     // Update Employer
     // Save Job
-    // This kind of works! I get an error on GraphQL, but it adds to the array on Compass
-    // Saying it Cannot return null for non-nullable field Job.title
+    // This works!
     saveJob: async (_, { userId, jobId }) => {
       try {
-        return User.findOneAndUpdate(
+        const updatedUser = await User.findOneAndUpdate(
           { _id: userId },
           {
             $addToSet: { savedjobs: jobId },
@@ -173,6 +172,7 @@ const resolvers = {
             runValidators: true,
           }
         );
+        return updatedUser;
       } catch (err) {
         throw new Error(err);
       }
