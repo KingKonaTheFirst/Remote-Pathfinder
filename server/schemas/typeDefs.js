@@ -34,6 +34,7 @@ input AddressInput {
     first: String!
     last: String!
     email: String!
+    password: String!
     phone: String,
     skills: [String]
     savedjobs: [Job]
@@ -59,12 +60,12 @@ input AddressInput {
     userLogin(email: String!, password: String!): Auth
     employerLogin(email: String!, password: String!): Auth
     updateUser(userId: ID!, first: String, last: String, email: String, password: String, phone: String, skills: [String]): User
+    updateEmployer(employerId: ID!, employer_name: String, email: String, password: String, address: AddressInput, industry: String, size: String): Employer
     saveJob(userId: ID!, jobId: ID!): User
     unsaveJob(userId: ID!, jobId: ID!): User
     createJob(title: String!, pay: Float!, employment_type: String!, description: String!, location: String!, benefits: String!, employerId: ID!): Job
     updateJob(jobId: ID!, title: String, pay: Float, employment_type: String, description: String, location: String, benefits: String
       ): Job
-    archiveJob(jobId: ID!): Job
   }
   `;
 
