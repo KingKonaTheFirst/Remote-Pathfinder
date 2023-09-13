@@ -5,6 +5,7 @@ import "../index.css"
 
 const Footer = () => {
   return (
+    
     <div className="footer1">
       <div className="footer2">
         <div>
@@ -25,6 +26,7 @@ const Footer = () => {
         Remote Pathfinder &copy; 2023
       </h3>
     </div>
+    
   );
 };
 
