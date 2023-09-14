@@ -48,9 +48,8 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           {/* logo */}
-          <a to="/">
             <img src={Logo} alt="Logo" />
-          </a>
+          
 
           <div className="flex items-center justify-between">
             {/* Navigation */}
