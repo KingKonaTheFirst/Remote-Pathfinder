@@ -151,7 +151,8 @@ export default function SignUp() {
         <div className="flex justify-center mt-8">
   <div id="submit"
     className="px-4 py-2 font-medium text-white overflow-hidden cursor-pointer focus:outline-none focus:bg-teal-900 transition-color">
-    Submit
+
+    <button>Submit</button>
   </div>
 </div>
       </form>

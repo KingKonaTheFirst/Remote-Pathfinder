@@ -112,7 +112,7 @@ const Header = () => {
                               </MenuItem>
                             ) : (
                               <MenuItem onClick={handleLogin}>
-                                <Link to="/signup">Login</Link>
+                                <Link to="/login">Login</Link>
                               </MenuItem>
                             )}
                           </MenuList>

@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="flex flex-col items-center my-10"
+      className="flex items-center justify-center max-w-lg my-10  p-8 footer1 rounded-lg"
     >
       <div className="w-3/4 md:w-1/3">
         <label htmlFor="email" className="block text-lg font-medium text-white">
@@ -63,7 +63,7 @@ const Login = () => {
           onChange={handleInputChange}
           type="email"
           placeholder="example@gmail.com"
-          className="w-full px-3 py-2 mt-2 text-gray-900 bg-white rounded shadow focus:outline-none focus:border-blue-500"
+          className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md"
         />
       </div>
       <div className="w-3/4 mt-4 md:w-1/3">
@@ -76,15 +76,17 @@ const Login = () => {
           onChange={handleInputChange}
           type="password"
           placeholder="*********"
-          className="w-full px-3 py-2 mt-2 text-gray-900 bg-white rounded shadow focus:outline-none focus:border-blue-500"
+          className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md"
         />
       </div>
-      <button
-        type="submit"
-        className="px-4 py-2 mt-8 overflow-hidden font-medium text-white rounded cursor-pointer w-36 hover:teal-800 focus:outline-none focus:bg-teal-900 transition-color"
-      >
-        Submit
-      </button>
+      
+      <div className="flex justify-center mt-8">
+  <div id="submit"
+    className="px-4 py-2 font-medium text-white overflow-hidden cursor-pointer focus:outline-none focus:bg-teal-900 transition-color">
+
+    <button>Submit</button>
+  </div>
+</div>
     </form>
   );
 };
