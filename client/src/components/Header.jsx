@@ -48,9 +48,8 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           {/* logo */}
-          <a to="/">
             <img src={Logo} alt="Logo" />
-          </a>
+          
 
           <div className="flex items-center justify-between">
             {/* Navigation */}
@@ -93,27 +92,28 @@ const Header = () => {
                           placement === 'bottom-start' ? 'left top' : 'left bottom',
                       }}
                     >
-                     <Paper>
+                     <Paper className="rounded-lg">
                         <ClickAwayListener onClickAway={handleClose}>
                           <MenuList
                             autoFocusItem={open}
                             id="composition-menu"
                             aria-labelledby="composition-button"
                             onKeyDown={handleListKeyDown}
+                            className="footer1   "
                           >
                             <MenuItem onClick={handleClose}>
                               <Link to="/profile">Profile</Link>
                             </MenuItem>
-                            <MenuItem onClick={handleClose}>
-                              <Link to="/account">My account</Link>
-                            </MenuItem>
+                            
                             {isLoggedIn ? (
                               <MenuItem onClick={handleLogout}>
                                 Logout
                               </MenuItem>
                             ) : (
                               <MenuItem onClick={handleLogin}>
-                                <Link to="/signup">Login</Link>
+                                <Link to="/login">Login</Link>
+                                <ul> / </ul>
+                                <Link to="/signup">Sign-Up</Link>
                               </MenuItem>
                             )}
                           </MenuList>

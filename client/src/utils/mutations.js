@@ -1,31 +1,25 @@
 import { gql } from "@apollo/client";
 
 export const CREATE_USER = gql`
-  mutation CreateUser(
+  mutation createUser(
     $first: String!
     $last: String!
     $email: String!
     $password: String!
+    $phone: String
   ) {
-    createUser(first: $first, last: $last, email: $email, password: $password) {
+    createUser(
+      first: $first
+      last: $last
+      email: $email
+      password: $password
+      phone: $phone
+    ) {
       token
       user {
         email
         first
         last
-        password
-        phone
-        savedjobs {
-          benefits
-          description
-          employerId
-          employment_type
-          location
-          pay
-          title
-          _id
-        }
-        _id
       }
     }
   }
@@ -72,7 +66,7 @@ export const CREATE_EMPLOYER = gql`
 `;
 
 export const USER_LOGIN = gql`
-  mutation UserLogin($email: String!, $password: String!) {
+  mutation userLogin($email: String!, $password: String!) {
     userLogin(email: $email, password: $password) {
       token
       user {
@@ -81,7 +75,6 @@ export const USER_LOGIN = gql`
         last
         email
         phone
-        skills
         savedjobs {
           _id
           title
