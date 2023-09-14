@@ -66,7 +66,7 @@ export const CREATE_EMPLOYER = gql`
 `;
 
 export const USER_LOGIN = gql`
-  mutation UserLogin($email: String!, $password: String!) {
+  mutation userLogin($email: String!, $password: String!) {
     userLogin(email: $email, password: $password) {
       token
       user {
@@ -75,7 +75,6 @@ export const USER_LOGIN = gql`
         last
         email
         phone
-        skills
         savedjobs {
           _id
           title
