@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 export default function SignUp() {
-  // State to Hold Form Data
-  const [signUpData, setSignUpData] = useState({
+  const [formState, setFormState] = useState({
     first: "",
     last: "",
     email: "",
@@ -17,28 +17,42 @@ export default function SignUp() {
 
   // Handle input changes and update form data
   const handleInputChange = (e) => {
-    setSignUpData({ ...signUpData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = await createUser({
-        variables: signUpData,
+      const { data } = await createUser({
+        variables: { ...formState },
       });
 
       Auth.login(data.createUser.token);
+
+      // Redirect to home page after successful login
+      window.location.assign("/");
     } catch (error) {
       console.error(error);
     }
+
+    // Clear form values after submission
+    /*     setFormState({
+      email: "",
+      password: "",
+    }); */
   };
 
   return (
-    <div className="flex items-center justify-center p-5">
+    <div className="flex items-center justify-center p-5 mb-10">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleFormSubmit}
         className="w-full max-w-lg p-8 bg-gray-800 rounded-lg"
       >
         <h1 className="mb-6 text-3xl font-medium text-center text-white">
@@ -55,7 +69,7 @@ export default function SignUp() {
             </label>
             <input
               name="first"
-              value={signUpData.first}
+              value={formState.first}
               onChange={handleInputChange}
               type="text"
               placeholder="Enter your first name"
@@ -71,8 +85,8 @@ export default function SignUp() {
               Last Name:
             </label>
             <input
-              value={signUpData.last}
               name="last"
+              value={formState.last}
               onChange={handleInputChange}
               type="text"
               placeholder="Enter your last name"
@@ -89,8 +103,8 @@ export default function SignUp() {
             Email Address:
           </label>
           <input
-            value={signUpData.email}
             name="email"
+            value={formState.email}
             onChange={handleInputChange}
             type="email"
             placeholder="example@gmail.com"
@@ -107,8 +121,8 @@ export default function SignUp() {
               Password:
             </label>
             <input
-              value={signUpData.password}
               name="password"
+              value={formState.password}
               onChange={handleInputChange}
               type="password"
               placeholder="Enter your password"
@@ -124,8 +138,8 @@ export default function SignUp() {
               Phone #:
             </label>
             <input
-              value={signUpData.phone}
               name="phone"
+              value={formState.phone}
               onChange={handleInputChange}
               type="text"
               placeholder="Enter your phone number"
