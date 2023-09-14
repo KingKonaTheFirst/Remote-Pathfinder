@@ -53,7 +53,7 @@ export default function SignUp() {
     <div className="flex items-center justify-center p-5 mb-10">
       <form
         onSubmit={handleFormSubmit}
-        className="w-full max-w-lg p-8 bg-gray-800 rounded-lg"
+        className="w-full max-w-lg p-8 footer1 rounded-lg"
       >
         <h1 className="mb-6 text-3xl font-medium text-center text-white">
           Sign Up
@@ -151,7 +151,8 @@ export default function SignUp() {
         <div className="flex justify-center mt-8">
   <div id="submit"
     className="px-4 py-2 font-medium text-white overflow-hidden cursor-pointer focus:outline-none focus:bg-teal-900 transition-color">
-    Submit
+
+    <button>Submit</button>
   </div>
 </div>
       </form>

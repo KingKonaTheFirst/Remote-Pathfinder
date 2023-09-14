@@ -48,9 +48,8 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           {/* logo */}
-          <a to="/">
             <img src={Logo} alt="Logo" />
-          </a>
+          
 
           <div className="flex items-center justify-between">
             {/* Navigation */}
@@ -113,7 +112,7 @@ const Header = () => {
                               </MenuItem>
                             ) : (
                               <MenuItem onClick={handleLogin}>
-                                <Link to="/signup">Login</Link>
+                                <Link to="/login">Login</Link>
                               </MenuItem>
                             )}
                           </MenuList>
