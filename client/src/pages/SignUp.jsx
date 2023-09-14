@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 export default function SignUp() {
-  // State to Hold Form Data
-  const [signUpData, setSignUpData] = useState({
+  const [formState, setFormState] = useState({
     first: "",
     last: "",
     email: "",
@@ -17,7 +17,7 @@ export default function SignUp() {
 
   // Handle input changes and update form data
   const handleInputChange = (e) => {
-    setSignUpData({ ...signUpData, [e.target.name]: e.target.value });
+    setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
   // Handle form submission
@@ -25,11 +25,14 @@ export default function SignUp() {
     e.preventDefault();
 
     try {
-      const data = await createUser({
-        variables: signUpData,
+      const { data } = await createUser({
+        variables: { ...formState },
       });
 
       Auth.login(data.createUser.token);
+
+      // Redirect to home page after successful login
+      window.location.assign("/");
     } catch (error) {
       console.error(error);
     }
@@ -55,7 +58,7 @@ export default function SignUp() {
             </label>
             <input
               name="first"
-              value={signUpData.first}
+              value={formState.first}
               onChange={handleInputChange}
               type="text"
               placeholder="Enter your first name"
@@ -71,7 +74,7 @@ export default function SignUp() {
               Last Name:
             </label>
             <input
-              value={signUpData.last}
+              value={formState.last}
               name="last"
               onChange={handleInputChange}
               type="text"
@@ -89,7 +92,7 @@ export default function SignUp() {
             Email Address:
           </label>
           <input
-            value={signUpData.email}
+            value={formState.email}
             name="email"
             onChange={handleInputChange}
             type="email"
@@ -107,7 +110,7 @@ export default function SignUp() {
               Password:
             </label>
             <input
-              value={signUpData.password}
+              value={formState.password}
               name="password"
               onChange={handleInputChange}
               type="password"
@@ -124,7 +127,7 @@ export default function SignUp() {
               Phone #:
             </label>
             <input
-              value={signUpData.phone}
+              value={formState.phone}
               name="phone"
               onChange={handleInputChange}
               type="text"
