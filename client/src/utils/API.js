@@ -1,4 +1,4 @@
-export const searchJobs = (query) => {
+export const searchJobApi = (query) => {
 
     const url = `https://jsearch.p.rapidapi.com/search?query=${query}&page=1&num_pages=1&remote_jobs_only=true`;
     const options = {
