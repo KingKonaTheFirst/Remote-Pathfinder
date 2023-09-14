@@ -222,18 +222,23 @@ button:focus-visible {
 .input {
   background-color: rgb(92, 92, 92);
   margin-right: 20px;
+  margin-top: 20px;
+  color: white;
+}
+
+input::placeholder {
+  color: black;
 }
 
 .listItem {
-
-  margin-bottom: 10px;
-  margin-left: 5px;
-  margin-right: 5px;
+margin-left: 20px;
+padding-top: ;
 }
 
 .heading2 {
   font-size: 30px;
   margin-bottom: 20px;
+  color: black;
 }
 
 .button {
@@ -241,4 +246,8 @@ button:focus-visible {
   color: black;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+#list {
+color: black;
 }
