@@ -89,7 +89,6 @@ const SearchJobs = () => {
                                 <p>Employment Type: {job.employment_type}</p>
                                 <p>Pay: {job.pay}</p>
                                 <p>Benefits: {job.benefits}</p>
-
                             </Link>
                         </li>
                     );
