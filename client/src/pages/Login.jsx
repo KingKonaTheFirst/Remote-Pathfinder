@@ -49,11 +49,12 @@ const Login = () => {
   };
 
   return (
+    <div className="flex items-center justify-center p-5 mb-10">
     <form
       onSubmit={handleFormSubmit}
-      className="flex items-center justify-center max-w-lg my-10  p-8 footer1 rounded-lg"
+      className="flex items-center justify-center p-8 footer1 rounded-lg shadow-md w-full max-w-xl"
     >
-      <div className="w-3/4 md:w-1/3">
+      <div className="w-3/4 md:w-2/3">
         <label htmlFor="email" className="block text-lg font-medium text-white">
           Email:
         </label>
@@ -66,7 +67,7 @@ const Login = () => {
           className="py-3 px-4 block w-full shadow-sm text-secondary focus:outline-none border-gray-300 rounded-md"
         />
       </div>
-      <div className="w-3/4 mt-4 md:w-1/3">
+      <div className="w-3/4 mt-4 md:w-2/3">
         <label htmlFor="email" className="block text-lg font-medium text-white">
           Password:
         </label>
@@ -88,6 +89,7 @@ const Login = () => {
   </div>
 </div>
     </form>
+    </div>
   );
 };
 
