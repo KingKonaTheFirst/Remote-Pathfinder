@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { USER_LOGIN } from "../utils/mutations";
+import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 
 const Login = () => {
@@ -84,6 +85,12 @@ const Login = () => {
             placeholder="*********"
             className="block w-full px-4 py-3 border-gray-300 rounded-md shadow-sm text-secondary focus:outline-none"
           />
+        </div>
+        <div className="w-full ">
+          <p>Don't have an account? 
+            <Link className="font-semibold"
+            to="/signup"> click here</Link>
+          </p>
         </div>
 
         <div className="flex justify-center mt-8">

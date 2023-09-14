@@ -92,20 +92,19 @@ const Header = () => {
                           placement === 'bottom-start' ? 'left top' : 'left bottom',
                       }}
                     >
-                     <Paper>
+                     <Paper className="rounded-lg">
                         <ClickAwayListener onClickAway={handleClose}>
                           <MenuList
                             autoFocusItem={open}
                             id="composition-menu"
                             aria-labelledby="composition-button"
                             onKeyDown={handleListKeyDown}
+                            className="footer1   "
                           >
                             <MenuItem onClick={handleClose}>
                               <Link to="/profile">Profile</Link>
                             </MenuItem>
-                            <MenuItem onClick={handleClose}>
-                              <Link to="/account">My account</Link>
-                            </MenuItem>
+                            
                             {isLoggedIn ? (
                               <MenuItem onClick={handleLogout}>
                                 Logout
@@ -113,6 +112,8 @@ const Header = () => {
                             ) : (
                               <MenuItem onClick={handleLogin}>
                                 <Link to="/login">Login</Link>
+                                <ul> / </ul>
+                                <Link to="/signup">Sign-Up</Link>
                               </MenuItem>
                             )}
                           </MenuList>
