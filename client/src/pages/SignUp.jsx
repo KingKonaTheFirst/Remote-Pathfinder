@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../utils/mutations";
+import { Link } from "react-router-dom";
 import Auth from "../utils/auth";
 
 export default function SignUp() {
@@ -147,14 +148,24 @@ export default function SignUp() {
             />
           </div>
         </div>
+        <div className="w-full ">
+          <p>
+            Already have an account?
+            <Link className="font-semibold" to="/login">
+              {" "}
+              click here
+            </Link>
+          </p>
+        </div>
 
         <div className="flex justify-center mt-8">
-  <div id="submit"
-    className="px-4 py-2 font-medium text-white overflow-hidden cursor-pointer focus:outline-none focus:bg-teal-900 transition-color">
-
-    <button>Submit</button>
-  </div>
-</div>
+          <div
+            id="submit"
+            className="px-4 py-2 font-medium text-white overflow-hidden cursor-pointer focus:outline-none focus:bg-teal-900 transition-color"
+          >
+            <button>Submit</button>
+          </div>
+        </div>
       </form>
     </div>
   );
