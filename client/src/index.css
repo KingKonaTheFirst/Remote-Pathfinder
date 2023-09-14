@@ -212,3 +212,8 @@ button:focus-visible {
 .outlet-content {
   flex: 1;
 }
+
+.profile {
+  margin-left: 40px;
+  margin-right: 40px;
+}
