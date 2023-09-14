@@ -31,6 +31,7 @@ const Contact = () => {
             console.log(error.text);
         });
     };
+    
 
     return (
         <div className='flex overflow-hidden contactForm'>

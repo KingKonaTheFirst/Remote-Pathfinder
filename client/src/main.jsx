@@ -1,20 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './index.css';
-import App from './App.jsx';
-import Error from './pages/Error.jsx';
-import Home from './pages/Home.jsx';
-import Contact from './pages/Contact.jsx';
-import Login from './pages/Login.jsx';
-import Signup from './pages/Signup';
-import Profile from './pages/Profile.jsx';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import App from "./App.jsx";
+import Error from "./pages/Error.jsx";
+import Home from "./pages/Home.jsx";
+import Contact from "./pages/Contact.jsx";
+import Login from "./pages/Login.jsx";
+import SignUp from "./pages/SignUp";
+import Profile from "./pages/Profile.jsx";
 import About from "./pages/About.jsx";
-import Plans from "./pages/Plans.jsx"
+import Plans from "./pages/Plans.jsx";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     errorElement: <Error />,
     children: [
@@ -44,7 +44,6 @@ const router = createBrowserRouter([
   }
 ])
 
-
 ReactDOM.createRoot(document.getElementById("root")).render(
-<RouterProvider router={router} />
+  <RouterProvider router={router} />
 );

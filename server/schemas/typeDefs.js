@@ -36,7 +36,6 @@ input AddressInput {
     email: String!
     password: String!
     phone: String,
-    skills: [String]
     savedjobs: [Job]
   }
 
@@ -55,7 +54,7 @@ input AddressInput {
   }
 
   type Mutation {
-    createUser(first: String!, last: String!, email: String!, password: String!, phone: String, skills: [String]): Auth
+    createUser(first: String!, last: String!, email: String!, password: String!, phone: String): Auth
     createEmployer(employer_name: String!, email: String!, password: String!, address: AddressInput, industry: String!, size: String!): Auth
     userLogin(email: String!, password: String!): Auth
     employerLogin(email: String!, password: String!): Auth

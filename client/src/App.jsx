@@ -1,18 +1,14 @@
-
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
-import Footer from './components/Footer';
+import Footer from "./components/Footer";
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import { setContext } from "@apollo/client/link/context"
-import './index.css';
-
-
-// import Nav from './components/Nav';
+import { setContext } from "@apollo/client/link/context";
+import "./index.css";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
