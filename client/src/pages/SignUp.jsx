@@ -17,11 +17,16 @@ export default function SignUp() {
 
   // Handle input changes and update form data
   const handleInputChange = (e) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -36,12 +41,18 @@ export default function SignUp() {
     } catch (error) {
       console.error(error);
     }
+
+    // Clear form values after submission
+    /*     setFormState({
+      email: "",
+      password: "",
+    }); */
   };
 
   return (
-    <div className="flex items-center justify-center p-5">
+    <div className="flex items-center justify-center p-5 mb-10">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={handleFormSubmit}
         className="w-full max-w-lg p-8 bg-gray-800 rounded-lg"
       >
         <h1 className="mb-6 text-3xl font-medium text-center text-white">
@@ -74,8 +85,8 @@ export default function SignUp() {
               Last Name:
             </label>
             <input
-              value={formState.last}
               name="last"
+              value={formState.last}
               onChange={handleInputChange}
               type="text"
               placeholder="Enter your last name"
@@ -92,8 +103,8 @@ export default function SignUp() {
             Email Address:
           </label>
           <input
-            value={formState.email}
             name="email"
+            value={formState.email}
             onChange={handleInputChange}
             type="email"
             placeholder="example@gmail.com"
@@ -110,8 +121,8 @@ export default function SignUp() {
               Password:
             </label>
             <input
-              value={formState.password}
               name="password"
+              value={formState.password}
               onChange={handleInputChange}
               type="password"
               placeholder="Enter your password"
@@ -127,8 +138,8 @@ export default function SignUp() {
               Phone #:
             </label>
             <input
-              value={formState.phone}
               name="phone"
+              value={formState.phone}
               onChange={handleInputChange}
               type="text"
               placeholder="Enter your phone number"

@@ -36,9 +36,9 @@ const Login = () => {
       // Redirect to home page after successful login
       window.location.assign("/");
       console.log("Login Successful");
-    } catch (e) {
+    } catch (error) {
       console.log("Login NOT Successful");
-      console.error(e);
+      console.error(error);
     }
 
     // Clear form values after submission
