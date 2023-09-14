@@ -75,7 +75,6 @@ const handleJobClick = (job) => {
     } catch (err) {
       console.error(err);
     }
-  };
 
   return (
     <>
@@ -121,6 +120,7 @@ const handleJobClick = (job) => {
       </section>
     </>
   );
+
 };
 
 export default SearchJobs;

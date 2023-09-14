@@ -11,6 +11,7 @@ import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile.jsx";
 import About from "./pages/About.jsx";
 import Plans from "./pages/Plans.jsx";
+import Jobs from "./pages/Jobs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,29 +21,39 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
-      }, {
-        path: '/login',
-        element: <Login />
-      }, {
-        path: '/signup',
-        element: <Signup />
-      }, {
-        path: '/contact',
-        element: <Contact />
-      }, {
-        path: '/profile',
-        element: <Profile />
-      }, {
-        path: '/about',
-        element: <About />
-      }, {
-        path: '/plans',
-        element: <Plans />
-      }
-    ]
-  }
-])
+        element: <Home />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/profiles",
+        element: <Profile />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/plans",
+        element: <Plans />,
+      },
+      {
+        path: "/jobs",
+        element: <Jobs />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
