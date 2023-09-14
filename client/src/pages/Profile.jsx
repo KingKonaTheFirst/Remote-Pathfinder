@@ -1,34 +1,41 @@
-function addLi()
-{
-
-    var txtVal = document.getElementById('txtVal').value,
-        listNode = document.getElementById('list'),
-        liNode = document.createElement("LI"),
-        txtNode = document.createTextNode(txtVal);
-
-     liNode.appendChild(txtNode);
-     listNode.appendChild(liNode);
-
-}
+import React, { useState } from 'react';
 
 const Profile = () => {
+    // Use React state to manage the list of skills
+    const [skills, setSkills] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+
+    const addSkill = () => {
+        if (inputValue.trim() !== '') {
+            setSkills([...skills, inputValue]);
+            setInputValue(''); // Clear the input field after adding a skill
+        }
+    };
+
     return (
         <div className="text-center">
             <h1 className="heading">Profile</h1>
             <div>
-                <div className="about">
-                Placeholder text
-                </div>
-                <div class="flex bg-gray-400 profile">
-                    <div class="flex-1 text-gray-800 text-center bg-gray-400 px-4 py-2 m-2">
+                <div className="about">Placeholder text</div>
+                <div className="flex bg-gray-400 profile">
+                    <div className="flex-1 text-gray-800 text-center bg-gray-500 px-4 py-2 m-2">
                         Skills 
-
+                        <ul id="list">
+                            {skills.map((skill, index) => (
+                                <li key={index}>{skill}</li>
+                            ))}
+                        </ul>
+                        <input
+                            type="text"
+                            id="txtVal"
+                            placeholder="Enter a skill"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                        />
+                        <button onClick={addSkill}>Add Skill</button>
                     </div>
-                    <div class="flex-1 text-gray-800 text-center bg-gray-500 px-4 py-2 m-2">
-                        Item that cannot grow or shrink
-                    </div>
-                    <div class="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2">
-                        Item that can grow or shrink if needed
+                    <div className="flex-1 text-gray-800 text-center bg-gray-500 px-4 py-2 m-2">
+                        Resume
                     </div>
                 </div>
             </div>
