@@ -11,29 +11,47 @@ const SearchJobs = () => {
   const [currentJob, setCurrentJob] = useState(null);
 
   const JobModal = () => (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
-    <div className="flex flex-col mx-12 bg-gray-600 p-8 rounded-md shadow-lg max-h-[80vh] overflow-y-auto">
-            <button onClick={() => setShowModal(false)}>Close</button>
-            {currentJob && (
-                <>
-                    <h3>{currentJob.title}</h3>
-                    <p>Location: {currentJob.location}</p>
-                    <p>Company: {currentJob.employer_name}</p>
-                    <p>Employment Type: {currentJob.employment_type}</p>
-                    <p>Pay: {currentJob.pay}</p>
-                    <p>Benefits: {currentJob.benefits}</p>
-                    <p>Description: {currentJob.description}</p>
-                    <a className="text-bold text-blue-400" href={currentJob.link} target="_blank" rel="noopener noreferrer">Apply Now</a>
-                </>
-            )}
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60">
+      <div className="flex flex-col mx-12 bg-gray-600 p-8 rounded-md shadow-lg max-h-[80vh] overflow-y-auto">
+        <div className="sticky top-0">
+          <button
+            className="bg-gray-400 bg-opacity-50 text-red-500 text-center items-center text-sm p-2 rounded-lg"
+            onClick={() => setShowModal(false)}
+          >
+            Close
+          </button>
         </div>
+        {currentJob && (
+          <>
+            <div className="text-center p-5 mx-5">
+              <h3>{currentJob.title}</h3>
+              <p>Location: {currentJob.location}</p>
+              <p>Company: {currentJob.employer_name}</p>
+              <p>Employment Type: {currentJob.employment_type}</p>
+              <p>Pay: {currentJob.pay}</p>
+              <p>Benefits: {currentJob.benefits}</p>
+              <p>
+                Description: <br /> {currentJob.description}
+              </p>
+              <a
+                className="text-bold text-blue-400"
+                href={currentJob.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Apply Now
+              </a>
+            </div>
+          </>
+        )}
+      </div>
     </div>
-);
-            
-const handleJobClick = (job) => {
+  );
+
+  const handleJobClick = (job) => {
     setCurrentJob(job);
     setShowModal(true);
-};
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -81,7 +99,7 @@ const handleJobClick = (job) => {
     <>
       <h1>Search for Jobs</h1>
 
-      <form onSubmit={handleFormSubmit}>
+      <form className="text-white" onSubmit={handleFormSubmit}>
         <input
           name="searchInput"
           value={searchInput}
@@ -89,7 +107,7 @@ const handleJobClick = (job) => {
           placeholder="Search for a Job"
           onChange={(e) => setSearchInput(e.target.value)}
           required
-          className="py-3 px-4 w-full rounded-md"
+          className="py-3 px-4 w-full footer1 rounded-md"
         />
         <button>Submit</button>
       </form>
@@ -100,28 +118,27 @@ const handleJobClick = (job) => {
           : "Search for a job to begin"}
       </h2>
 
-      <section className="job-listings py-16 justify-space-between">
-        <ul className="space-y-4">
-          {searchedJobs.map((job) => {
-            return (
-              <li className="border p-4 hover:bg-teal-900" onClick={() => handleJobClick(job)}>
-                {/* <Link to={job.link} target="_blank"> */}
-                  <h3 className="text-xl font-semibold">{job.title}</h3>
-                  <p className="mt-2">Location: {job.location}</p>
-                  <p>Company: {job.employer_name}</p>
-                  <p>Employment Type: {job.employment_type}</p>
-                  <p>Pay: {job.pay}</p>
-                  <p>Benefits: {job.benefits}</p>
-                {/* </Link> */}
-              </li>
-            );
-          })}
-        </ul>
+      <section className="job-listings py-16 grid grid-cols-2 gap-4">
+        {searchedJobs.map((job) => {
+          return (
+            <li
+              key={job.title}
+              className="border p-4 hover:bg-teal-900 list-none"
+              onClick={() => handleJobClick(job)}
+            >
+              <h3 className="text-xl font-semibold">{job.title}</h3>
+              <p className="mt-2">Location: {job.location}</p>
+              <p>Company: {job.employer_name}</p>
+              <p>Employment Type: {job.employment_type}</p>
+              <p>Pay: {job.pay}</p>
+              <p>Benefits: {job.benefits}</p>
+            </li>
+          );
+        })}
         {showModal && <JobModal />}
       </section>
     </>
   );
-        };
-    
+};
 
 export default SearchJobs;
