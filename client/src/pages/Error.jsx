@@ -1,7 +1,7 @@
 const Error = () => {
     return (
-        <div>
-            <h1>Error</h1>
+        <div className="hero text-center py-16">
+            <h1 className="text-4xl font-bold">My Peoples.... WHAT DID YOU BREAK TO GET HERE!</h1>
         </div>
     );
 };
