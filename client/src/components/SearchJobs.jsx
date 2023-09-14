@@ -1,45 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import Input from './Input';
-
-import Auth from '../utils/auth';
+import React, { useState } from 'react';
 import { searchJobApi } from '../utils/API';
 
 const SearchJobs = () => {
-    const [searchedJobs, setSearchedJobs] = useState([]);
-
     const [searchInput, setSearchInput] = useState('');
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log("Submit Button Functioning.  Input read as:", searchInput);
 
-        if (!searchInput) {
-            return false;
-        }
+        const response = await searchJobApi(searchInput);
 
-        try {
-            const response = await searchJobApi(searchInput);
+        console.log(response);
 
-            console.log(response);
+        const { items } = await response.json();
 
-
-            if (!response.ok) {
-                throw new Error('something went wrong!');
-            }
-
-            const { items } = await response.json();
-
-            const jobData = items.map((job) => (
-                console.log(job.data.job_title),
-                console.log(job.job_title)
-            ));
-
-            console.log(jobData);
-
-            setSearchedJobs(jobData);
-            setSearchInput('');
-        } catch (err) {
-            console.error(err);
-        }
+        console.log(items);
     }
 
     return (
@@ -47,26 +22,21 @@ const SearchJobs = () => {
         <h1>Search for Jobs</h1>
 
         <form onSubmit={handleFormSubmit}>
-            <Input
-            name='searchInput'
-            value={searchInput}
-            type='text'
-            placeholder='Search for a Job'
-            onChange={(e) => setSearchInput(e.target.value)}
-            required
+            <input
+                name='searchInput'
+                value={searchInput}
+                type='text'
+                placeholder='Search for a Job'
+                onChange={(e) => setSearchInput(e.target.value)}
+                required
+                className="py-3 px-4 w-full rounded-md"
             />
             <button>
                 Submit
             </button>
         </form>
-
-        <h2>
-            {searchedJobs.length
-            ? `Viewing ${searchedJobs.length} results:`
-            : 'Search for a job to begin'}
-        </h2>
         </>
-    )
+    );
 };
 
 export default SearchJobs;
