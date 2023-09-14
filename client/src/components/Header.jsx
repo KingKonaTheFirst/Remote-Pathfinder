@@ -10,14 +10,20 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
+import Auth from "../utils/auth";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
   const handleLogin = () => {
     // If you have a login mechanism, you might want to set isLoggedIn after a successful login
     setOpen(false);
+  };
+  const handleLogout = () => {
+    Auth.logout(); // Logging out the user
+    setIsLoggedIn(false); // Updating state to reflect the logout
+    setOpen(false); // Closing the menu after logout
   };
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -102,7 +108,7 @@ const Header = () => {
                             className="footer1   "
                           >
                             <MenuItem onClick={handleClose}>
-                              <Link to="/profile">Profile</Link>
+                              <Link to="/profiles">Profile</Link>
                             </MenuItem>
                             
                             {isLoggedIn ? (
