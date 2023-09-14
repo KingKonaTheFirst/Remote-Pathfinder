@@ -12,7 +12,7 @@ const SearchJobs = () => {
 
   const JobModal = () => (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
-        <div className="flex flex-col mx-12 bg-gray-600 p-8 rounded-md shadow-lg">
+    <div className="flex flex-col mx-12 bg-gray-600 p-8 rounded-md shadow-lg max-h-[80vh] overflow-y-auto">
             <button onClick={() => setShowModal(false)}>Close</button>
             {currentJob && (
                 <>
@@ -23,12 +23,13 @@ const SearchJobs = () => {
                     <p>Pay: {currentJob.pay}</p>
                     <p>Benefits: {currentJob.benefits}</p>
                     <p>Description: {currentJob.description}</p>
-                    <button className="text-bold text-blue-400" href={currentJob.link} target="_blank" rel="noopener noreferrer">Apply Now</button>
+                    <a className="text-bold text-blue-400" href={currentJob.link} target="_blank" rel="noopener noreferrer">Apply Now</a>
                 </>
             )}
         </div>
     </div>
 );
+            
 const handleJobClick = (job) => {
     setCurrentJob(job);
     setShowModal(true);
@@ -75,7 +76,7 @@ const handleJobClick = (job) => {
     } catch (err) {
       console.error(err);
     }
-
+  };
   return (
     <>
       <h1>Search for Jobs</h1>
@@ -120,7 +121,7 @@ const handleJobClick = (job) => {
       </section>
     </>
   );
-
-};
+        };
+    
 
 export default SearchJobs;
