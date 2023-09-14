@@ -223,11 +223,12 @@ button:focus-visible {
   background-color: rgb(92, 92, 92);
   margin-right: 20px;
   margin-top: 20px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 input::placeholder {
   color: black;
+  text-align: center;
 }
 
 .listItem {
@@ -249,5 +250,9 @@ padding-top: ;
 }
 
 #list {
+color: black;
+}
+
+.resume {
 color: black;
 }

@@ -4,6 +4,7 @@ import { FaBackspace } from "react-icons/fa";
 const Profile = () => {
     const [skills, setSkills] = useState([]);
     const [inputValue, setInputValue] = useState('');
+    const [resume, setResume] = useState(null);
 
     const addSkill = () => {
         if (inputValue.trim() !== '') {
@@ -16,6 +17,11 @@ const Profile = () => {
         const updatedSkills = [...skills];
         updatedSkills.splice(index, 1);
         setSkills(updatedSkills);
+    };
+
+    const handleFileUpload = (e) => {
+        const file = e.target.files[0];
+        setResume(file);
     };
 
     return (
@@ -43,8 +49,20 @@ const Profile = () => {
                         />
                         <button className='button' onClick={addSkill}>Add Skill</button>
                     </div>
-                    <div className="flex-1 text-gray-800 text-center bg-gray-500 px-4 py-2 m-2">
+                    <div className="flex-1 text-center bg-gray-500 px-4 py-2 m-2">
                         <h3 className='heading2 font-bold'>Resume</h3>
+                        <div className='flex justify-center' >
+                            {resume && <p>Uploaded Resume: {resume.name}</p>}
+
+                            {/* File upload input (moved under the "Resume" section) */}
+                            <input
+                                className='resume'
+                                type="file"
+                                accept=".pdf,.doc,.docx"
+                                onChange={handleFileUpload}
+                                style={{ color: 'black' }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
