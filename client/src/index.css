@@ -212,3 +212,47 @@ button:focus-visible {
 .outlet-content {
   flex: 1;
 }
+
+.profile {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 50px;
+}
+
+.input {
+  background-color: rgb(92, 92, 92);
+  margin-right: 20px;
+  margin-top: 20px;
+  color: rgb(0, 0, 0);
+}
+
+input::placeholder {
+  color: black;
+  text-align: center;
+}
+
+.listItem {
+margin-left: 20px;
+padding-top: ;
+}
+
+.heading2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.button {
+  background-color: rgb(92, 92, 92);
+  color: black;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#list {
+color: black;
+}
+
+.resume {
+color: black;
+}

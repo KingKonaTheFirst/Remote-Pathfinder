@@ -20,35 +20,29 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
-      },
-      {
-        path: "/profiles",
-        element: <Profile />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/plans",
-        element: <Plans />,
-      },
-    ],
-  },
-]);
+        element: <Home />
+      }, {
+        path: '/login',
+        element: <Login />
+      }, {
+        path: '/signup',
+        element: <Signup />
+      }, {
+        path: '/contact',
+        element: <Contact />
+      }, {
+        path: '/profile',
+        element: <Profile />
+      }, {
+        path: '/about',
+        element: <About />
+      }, {
+        path: '/plans',
+        element: <Plans />
+      }
+    ]
+  }
+])
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
