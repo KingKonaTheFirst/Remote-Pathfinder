@@ -129,9 +129,6 @@ const SearchJobs = () => {
   };
   return (
     <>
-      <h1>Search for Jobs</h1>
-    
-
       <form className="text-white" onSubmit={handleFormSubmit}>
         <input
           name="searchInput"
@@ -140,14 +137,15 @@ const SearchJobs = () => {
           placeholder="Search for a Job"
           onChange={(e) => setSearchInput(e.target.value)}
           required
-          className="py-3 px-4 w-full footer1 rounded-md"
+          className="py-3 px-4 w-full text-left text-white placeholder-white footer1 rounded-md"
+ id="left"       
         />
-        <button>Submit</button>
+        <button className="flex ms-3 mt-2 mb-2">Submit</button>
       </form>
 
-      <h2 className="text-3xl font-semibold mb-8">
+      <h2 className="text-3xl font-semibold mt-6 text-center">
         {searchedJobs.length
-          ? `Viewing ${searchedJobs.length} results:`
+          ? `Viewing results:`
           : "Search for a job to begin"}
       </h2>
 
