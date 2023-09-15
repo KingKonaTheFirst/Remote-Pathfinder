@@ -137,7 +137,7 @@ const SearchJobs = () => {
           placeholder="Search for a Job"
           onChange={(e) => setSearchInput(e.target.value)}
           required
-          className="py-3 px-4 w-full text-left text-white placeholder-white placeholder-left footer1 rounded-md"
+          className="py-3 px-4 w-full text-left text-white placeholder-white footer1 rounded-md"
  id="left"       
         />
         <button className="flex ms-3 mt-2 mb-2">Submit</button>
