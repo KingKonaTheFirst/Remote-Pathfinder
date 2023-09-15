@@ -23,7 +23,7 @@ const Contact = () => {
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('service_uds51km', 'template_36d3iy2', form.current, 'RG00fl_M1OlduzjPs')
+        emailjs.sendForm(import.meta.env.VITE_SERVICE, import.meta.env.VITE_TEMPLATE, form.current, import.meta.env.VITE_PUBLIC)
         .then((result) => {
             console.log(result.text);
             form.current.reset();

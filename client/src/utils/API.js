@@ -4,7 +4,7 @@ export const searchJobApi = (searchInput) => {
     const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '73e984e367msh9cc0deea9bcc832p1ef798jsn680812134482',
+		'X-RapidAPI-Key': import.meta.env.VITE_API,
 		'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
 	}
 };
