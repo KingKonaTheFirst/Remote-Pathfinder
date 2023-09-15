@@ -17,7 +17,7 @@
   Use the command "npm i" to install neccessary packages to run this application.
 
 ## Usage
-  Link to Heroku goes here
+  https://remotepathfinder-674af8cc1693.herokuapp.com/
 
 ## Display
   ![Home](./client/src/assets/home.png)
