@@ -1,14 +1,6 @@
-const { connect, connection } = require('mongoose');
-require('dotenv').config();
+const { connect, connection } = require("mongoose");
 
-connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/remotepfDB", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
-connection.on('error', console.error.bind(console, 'connection error:'));
-connection.once('open', function() {
-  console.log("Connected to MongoDB!");
-});
+// DB Name goes at the end ------->
+connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/remotepfDB");
 
 module.exports = connection;
