@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import { searchJobApi } from "../utils/API";
 import { Link } from "react-router-dom";
+import Auth from '../utils/auth';
 
 const SearchJobs = () => {
   const [searchedJobs, setSearchedJobs] = useState([]);
 
   const [searchInput, setSearchInput] = useState("");
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
   const [currentJob, setCurrentJob] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
 
+
+  
+  
   const JobModal = () => (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60">
+      <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60">
       <div className="flex flex-col mx-12 bg-gray-600 p-8 rounded-md shadow-lg max-h-[80vh] overflow-y-auto">
         <div className="sticky top-0">
           <button
@@ -22,7 +28,7 @@ const SearchJobs = () => {
           </button>
         </div>
         {currentJob && (
-          <>
+            <>
             <div className="text-center p-5 mx-5">
               <h3>{currentJob.title}</h3>
               <p>Location: {currentJob.location}</p>
@@ -47,10 +53,36 @@ const SearchJobs = () => {
       </div>
     </div>
   );
-
+  const LoginPromptModal = () => (
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-60">
+      <div className="flex flex-col mx-12 bg-gray-600 p-8 rounded-md shadow-lg">
+        <button
+          className="bg-gray-400 bg-opacity-50 text-red-500 text-center items-center text-sm p-2 rounded-lg"
+          onClick={() => setShowLoginPrompt(false)}
+        >
+          Close
+        </button>
+        <div className="text-center p-5 mx-5">
+          <h3>You need to be logged in to view job details.</h3>
+          <Link to="/login" className="text-bold text-blue-400">
+            Login
+          </Link>
+          <span> or </span>
+          <Link to="/signup" className="text-bold text-blue-400">
+            Sign Up
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+  
   const handleJobClick = (job) => {
-    setCurrentJob(job);
-    setShowModal(true);
+    if (isLoggedIn) {
+      setCurrentJob(job);
+      setShowModal(true);
+    } else {
+      setShowLoginPrompt(true);
+    }
   };
 
   const handleFormSubmit = async (event) => {
@@ -98,6 +130,7 @@ const SearchJobs = () => {
   return (
     <>
       <h1>Search for Jobs</h1>
+    
 
       <form className="text-white" onSubmit={handleFormSubmit}>
         <input
@@ -130,12 +163,11 @@ const SearchJobs = () => {
               <p className="mt-2">Location: {job.location}</p>
               <p>Company: {job.employer_name}</p>
               <p>Employment Type: {job.employment_type}</p>
-              <p>Pay: {job.pay}</p>
-              <p>Benefits: {job.benefits}</p>
             </li>
           );
         })}
         {showModal && <JobModal />}
+        {showLoginPrompt && <LoginPromptModal />}
       </section>
     </>
   );
