@@ -44,7 +44,7 @@
   * Landon Deroin - Kingkonathefirst@gmail.com
   * Travis Rivera - Travis3214@yahoo.com
   * Russell Heady ii - Rdheadyii@gmail.com
-  * Wyatt Bensman - 
+  * Wyatt Bensman - Wyattbensman5@gmail.com
 
   ### Repository
   * https://github.com/KingKonaTheFirst/Remote-Pathfinder
