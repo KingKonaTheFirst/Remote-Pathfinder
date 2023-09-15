@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Logo from "../assets/logo.svg";
+import Logo from "/logo.svg";
 import { BiHomeAlt, BiUser } from "react-icons/bi";
 import { BsChatSquare } from "react-icons/bs";
 import { Link } from "react-router-dom";
