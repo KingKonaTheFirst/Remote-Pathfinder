@@ -263,3 +263,7 @@ padding-left: 160px;
 margin-top: 20px;
 margin-bottom: 20px;
 }
+#left::placeholder {
+  text-align: left;
+  
+}
