@@ -258,3 +258,8 @@ color: black;
 padding-left: 160px;
 
 }
+
+.about li {
+margin-top: 20px;
+margin-bottom: 20px;
+}
